@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AquaHarvest - Katalog Digital &amp; Penjualan Ikan Air Tawar</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="rasya_bannerDarurat" class="rasya_alertBanner">
+        <div>
+            🚨 <strong>Info Panen Darurat:</strong> Stok ikan siap panen tersedia saat debit air kali surut.
+            <a href="#katalog">Cek Daftar Ikan</a>
+        </div>
+        <button type="button" class="rasya_closeBtn" onclick="rasyaTutupBenner()" aria-label="Tutup banner">✖</button>
+    </div>
+
+    <header id="rasya_header">
+        <div class="rasya_container rasya_navWrapper">
+            <div class="rasya_logo">
+                <h1>🐟 AquaHarvest</h1>
+                <p>Kolam Ikan Keluarga Ciamis</p>
+            </div>
+            <nav class="rasya_menu">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#tentang">Tentang Kami</a></li>
+                    <li><a href="#katalog">Katalog Ikan</a></li>
+                    <li><a href="#panen-darurat">Panen Darurat</a></li>
+                    <li><a href="#galeri">Galeri</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#kontak">Kontak</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="rasya_heroSection">
+        <div class="rasya_container rasya_heroContent">
+            <h2>Katalog Digital &amp; Penjualan Ikan Air Tawar Segar</h2>
+            <p>Menyediakan Ikan Mas, Gurame, Mujair, dan Nilem langsung dari kolam keluarga untuk pembeli lokal maupun luar desa, khususnya saat kondisi panen darurat.</p>
+            <div class="rasya_heroButtons">
+                <a href="#katalog" class="rasya_btnPrimary">Lihat Katalog Ikan</a>
+                <a href="#panen-darurat" class="rasya_btnwarning">Info Panen Darurat</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="tentang" class="rasya_section">
+        <div class="rasya_container">
+            <h2 class="rasya_sectionTitle">Tentang AquaHarvest &amp; Usaha Kolam Keluarga</h2>
+            <p class="rasya_subTitle">
+                Mengenal sistem pemeliharaan ikan air tawar keluarga dan langkah cepat saat menghadapi penyusutan aliran air sungai.
+            </p>
+
+            <div class="rasya_card" style="margin-bottom: 24px;">
+                <h3>🌊 Latar Belakang Usaha</h3>
+                <p>AquaHarvest merupakan platform katalog digital yang dikembangkan untuk mengelola dan memasarkan hasil perikanan air tawar milik keluarga. Kegiatan utama kolam kami adalah memelihara dan membesarkan berbagai jenis ikan air tawar dengan mengandalkan pasokan aliran air dari kali sekitar.</p>
+                <br>
+                <p>Namun, ketika pasokan air kali tiba-tiba surut, ikan yang ada di kolam harus segera dipanen dan dijual secepat mungkin agar tidak mengalami kerugian. Website ini hadir untuk memperluas informasi penjualan hingga ke luar desa.</p>
+            </div>
+
+            <div class="rasya_grid3">
+                <div class="rasya_card">
+                    <h3>🎯 Jangkauan Luar Desa</h3>
+                    <p>Memperluas pemasaran dari yang sebelumnya hanya mengandalkan pembeli lokal sekitar kolam agar dapat menjangkau pembeli maupun pengepul dari luar desa secara maksimal.</p>
+                </div>
+                <div class="rasya_card">
+                    <h3>🛡️ Mitigasi Krisis Air</h3>
+                    <p>Menjadi sarana informasi cepat saat status <strong>Panen Darurat</strong> aktif akibat pasokan air sungai menyusut sehingga stok ikan segera terserap pasar.</p>
+                </div>
+                <div class="rasya_card">
+                    <h3>🤝 Informasi Transparan</h3>
+                    <p>Menyajikan ukuran, status ketersediaan (Panen Darurat atau Stok Reguler), dan harga per kilogram secara jelas sebelum transaksi.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="katalog" class="rasya_section rasya_bgAlt">
+        <div class="rasya_container">
+            <h2 class="rasya_sectionTitle">Katalog Ikan Air Tawar</h2>
+            <p class="rasya_subTitle">
+                Pilih filter <strong>Panen Darurat</strong> atau <strong>Stok Reguler</strong> untuk melihat kondisi terkini masing-masing komoditas ikan di kolam kami.
+            </p>
+
+            <div class="rasya_filterBox">
+                <div class="rasya_filterButtons" role="group" aria-label="Filter status ikan">
+                    <button type="button" class="rasya_filterBtn active" onclick="rasyaFilterKatalog('semua', this)">
+                        Semua
+                    </button>
+                    <button type="button" class="rasya_filterBtn darurat" onclick="rasyaFilterKatalog('darurat', this)">
+                        🚨 Panen Darurat
+                    </button>
+                    <button type="button" class="rasya_filterBtn reguler" onclick="rasyaFilterKatalog('reguler', this)">
+                        Stok Reguler
+                    </button>
+                </div>
+
+                <div class="rasya_searchWrapper">
+                    <span class="rasya_searchIcon">🔍</span>
+                    <input
+                        type="text"
+                        id="rasya_cariIkan"
+                        class="rasya_searchInput"
+                        placeholder="Cari jenis ikan (Gurame, Mas, Mujair, Nilem)..."
+                        oninput="rasyaCariIkan()"
+                    >
+                </div>
+            </div>
+
+            <div class="rasya_gridCatalog" id="rasya_daftarKatalog">
+                <!-- Ikan Gurame -->
+                <div class="rasya_card rasya_productCard" data-status="darurat" data-nama="ikan gurame">
+                    <div>
+                        <div class="rasya_imgWrap">
+                            <img src="gambar/Gurame.jpeg" alt="Ikan Gurame" class="rasya_productImg">
+                            <span class="rasya_badge darurat">⚡ PANEN DARURAT</span>
+                            <span class="rasya_stokBadge">Siap Angkut</span>
+                        </div>
+                        <h3>Ikan Gurame</h3>
+                        <p class="rasya_price">Rp 60.000 / kg</p>
+                        <ul class="rasya_specs">
+                            <li><strong>Ukuran:</strong> 1 - 3 ekor per kg</li>
+                            <li><strong>Kondisi:</strong> Segar &amp; Aktif di kolam</li>
+                            <li><strong>Status:</strong> Panen Darurat (Prioritas Cepat)</li>
+                        </ul>
+                    </div>
+                    <button type="button" onclick="rasyaPesanIkan('Ikan Gurame')" class="rasya_btnOrder">Pesan Sekarang</button>
+                </div>
+
+                <div class="rasya_card rasya_productCard" data-status="darurat" data-nama="ikan mas">
+                    <div>
+                        <div class="rasya_imgWrap">
+                            <img src="gambar/IkanMas.jpg" alt="Ikan Mas" class="rasya_productImg">
+                            <span class="rasya_badge darurat">⚡ PANEN DARURAT</span>
+                            <span class="rasya_stokBadge">Siap Angkut</span>
+                        </div>
+                        <h3>Ikan Mas</h3>
+                        <p class="rasya_price">Rp 30.000 / kg</p>
+                        <ul class="rasya_specs">
+                            <li><strong>Ukuran:</strong> 1 - 2 ekor per kg</li>
+                            <li><strong>Kondisi:</strong> Segar &amp; Aktif di kolam</li>
+                            <li><strong>Status:</strong> Panen Darurat (Debit Air Menyusut)</li>
+                        </ul>
+                    </div>
+                    <button type="button" onclick="rasyaPesanIkan('Ikan Mas')" class="rasya_btnOrder">Pesan Sekarang</button>
+                </div>
+
+                <div class="rasya_card rasya_productCard" data-status="reguler" data-nama="ikan mujair">
+                    <div>
+                        <div class="rasya_imgWrap">
+                            <img src="gambar/Mujair.jpg" alt="Ikan Mujair" class="rasya_productImg">
+                            <span class="rasya_badge reguler">STOK REGULER</span>
+                            <span class="rasya_stokBadge">Terpantau</span>
+                        </div>
+                        <h3>Ikan Mujair</h3>
+                        <p class="rasya_price">Rp 25.000 / kg</p>
+                        <ul class="rasya_specs">
+                            <li><strong>Ukuran:</strong> 5 - 10 ekor per kg</li>
+                            <li><strong>Kondisi:</strong> Segar &amp; Aktif di kolam</li>
+                            <li><strong>Status:</strong> Stok Reguler / Pre-order</li>
+                        </ul>
+                    </div>
+                    <button type="button" onclick="rasyaPesanIkan('Ikan Mujair')" class="rasya_btnOrder">Pesan Sekarang</button>
+                </div>
+
+                <div class="rasya_card rasya_productCard" data-status="reguler" data-nama="ikan nilem">
+                    <div>
+                        <div class="rasya_imgWrap">
+                            <img src="gambar/nilem.jpg" alt="Ikan Nilem" class="rasya_productImg">
+                            <span class="rasya_badge reguler">STOK REGULER</span>
+                            <span class="rasya_stokBadge">Terpantau</span>
+                        </div>
+                        <h3>Ikan Nilem</h3>
+                        <p class="rasya_price">Rp 30.000 / kg</p>
+                        <ul class="rasya_specs">
+                            <li><strong>Ukuran:</strong> 5 - 15 ekor per kg</li>
+                            <li><strong>Kondisi:</strong> Segar &amp; Aktif di kolam</li>
+                            <li><strong>Status:</strong> Stok Reguler / Pre-order</li>
+                        </ul>
+                    </div>
+                    <button type="button" onclick="rasyaPesanIkan('Ikan Nilem')" class="rasya_btnOrder">Pesan Sekarang</button>
+                </div>
+            </div>
+
+            <p id="rasya_kosongKatalog" class="rasya_emptyMsg" style="display: none;">
+                Tidak ada jenis ikan yang cocok dengan filter atau kata kunci pencarian tersebut.
+            </p>
+        </div>
+    </section>
+
+    <section id="panen-darurat" class="rasya_section">
+        <div class="rasya_container">
+            <h2 class="rasya_sectionTitle">Sistem Informasi Panen Darurat</h2>
+            <p class="rasya_subTitle">
+                Kolam kami pada dasarnya digunakan untuk memelihara dan membesarkan ikan. Penjualan dilakukan saat kondisi tertentu, terutama ketika pasokan air dari kali surut sehingga ikan perlu segera dipanen dan dijual agar tidak mengalami kerugian.
+            </p>
+
+            <div class="rasya_card" style="margin-bottom: 24px;">
+                <h3>🚨 Alur Penanganan Saat Pasokan Air Kali Surut</h3>
+                <ul class="rasya_specs">
+                    <li><strong>1. Pemantauan Debit Air:</strong> Mengecek kondisi aliran air dari kali ke kolam secara berkala.</li>
+                    <li><strong>2. Keputusan Panen Darurat:</strong> Jika air surut dan berisiko mengganggu pemeliharaan, ikan dijadwalkan untuk segera dipanen.</li>
+                    <li><strong>3. Penawaran Cepat ke Pembeli:</strong> Membuka akses pemesanan langsung baik bagi pembeli lokal maupun pembeli dari luar desa agar ikan cepat terserap.</li>
+                    <li><strong>4. Koordinasi Pengambilan &amp; Pengiriman:</strong> Menyesuaikan jadwal angkut dan jumlah kg sesuai kesepakatan dengan pembeli.</li>
+                </ul>
+            </div>
+
+            <div class="rasya_grid3">
+                <div class="rasya_card">
+                    <h3>💧 Fokus Pemeliharaan</h3>
+                    <p>Kolam diutamakan untuk budidaya/pemeliharaan ikan. Panen Darurat diaktifkan ketika pasokan air sungai menyusut atau berhenti.</p>
+                </div>
+                <div class="rasya_card">
+                    <h3>🚚 Jangkauan Luar Desa</h3>
+                    <p>Selain melayani warga sekitar, informasi cepat ini membantu menjangkau pembeli di luar desa agar stok panen darurat bisa terjual optimal.</p>
+                </div>
+                <div class="rasya_card">
+                    <h3>⚡ Respon Pemesanan</h3>
+                    <p>Pembeli dapat langsung memilih jenis ikan di katalog atau menghubungi kontak untuk menanyakan ketersediaan panen.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="galeri" class="rasya_section rasya_bgAlt">
+        <div class="rasya_container">
+            <h2 class="rasya_sectionTitle">Galeri Komoditas &amp; Kolam</h2>
+            <p class="rasya_subTitle">
+                Dokumentasi visual jenis ikan air tawar yang dipelihara di kolam keluarga.
+            </p>
+
+            <div class="rasya_gridCatalog">
+                <div class="rasya_card rasya_productCard">
+                    <div>
+                        <img src="gambar/IkanMas.jpg" alt="Dokumentasi Ikan Mas" class="rasya_productImg">
+                        <h3>Dokumentasi Ikan Mas</h3>
+                        <p>Salah satu komoditas utama yang dipelihara di kolam untuk kebutuhan konsumsi dan panen darurat.</p>
+                    </div>
+                </div>
+
+                <div class="rasya_card rasya_productCard">
+                    <div>
+                        <img src="gambar/Gurame.jpeg" alt="Dokumentasi Gurame" class="rasya_productImg">
+                        <h3>Dokumentasi Gurame</h3>
+                        <p>Ikan konsumsi bernilai jual tinggi yang dibesarkan dengan memperhatikan kualitas air kolam.</p>
+                    </div>
+                </div>
+
+                <div class="rasya_card rasya_productCard">
+                    <div>
+                        <img src="gambar/Mujair.jpg" alt="Dokumentasi Mujair" class="rasya_productImg">
+                        <h3>Dokumentasi Mujair</h3>
+                        <p>Jenis ikan air tawar yang banyak diminati pembeli lokal maupun pembeli dari luar desa.</p>
+                    </div>
+                </div>
+
+                <div class="rasya_card rasya_productCard">
+                    <div>
+                        <img src="gambar/nilem.jpg" alt="Dokumentasi Nilem" class="rasya_productImg">
+                        <h3>Dokumentasi Nilem</h3>
+                        <p>Komoditas ikan air tawar khas yang turut melengkapi variasi hasil panen kolam keluarga.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="rasya_section">
+        <div class="rasya_container">
+            <h2 class="rasya_sectionTitle">Pertanyaan Umum (FAQ)</h2>
+            <p class="rasya_subTitle">
+                Jawaban singkat seputar sistem pemeliharaan kolam, skema panen darurat saat pasokan air sungai surut, serta pemesanan ikan.
+            </p>
+
+            <div class="rasya_card" style="margin-bottom: 18px;">
+                <h3>1. Apakah ikan di kolam selalu dijual setiap hari?</h3>
+                <p>Tidak selalu. Kolam pada dasarnya digunakan untuk memelihara dan membesarkan ikan. Penjualan dilakukan pada kondisi tertentu, terutama saat pasokan air dari sungai surut sehingga ikan perlu segera dipanen dan dijual agar tidak rugi.</p>
+            </div>
+
+            <div class="rasya_card" style="margin-bottom: 18px;">
+                <h3>2. Apa perbedaan status Panen Darurat dan Stok Reguler di katalog?</h3>
+                <p><strong>Panen Darurat</strong> menandakan ikan perlu segera dipanen dan dipasarkan karena kondisi debit air menyusut, sedangkan <strong>Stok Reguler</strong> adalah komoditas yang kondisi airnya terpantau aman dan dapat dipesan secara terjadwal.</p>
+            </div>
+
+            <div class="rasya_card" style="margin-bottom: 18px;">
+                <h3>3. Apakah melayani pembeli dari luar desa?</h3>
+                <p>Ya, selain melayani warga sekitar, website katalog dan informasi ini juga disiapkan untuk memperluas jangkauan pemasaran hingga pembeli atau pengepul dari luar desa agar hasil panen dapat terserap optimal.</p>
+            </div>
+
+            <div class="rasya_card">
+                <h3>4. Bagaimana cara memesan ikan saat ada informasi panen?</h3>
+                <p>Kamu bisa melihat daftar harga dan status di bagian <a href="#katalog" style="color: #0284c7; font-weight: bold;">Katalog Ikan</a>, lalu melanjutkan pemesanan melalui formulir di bagian <a href="#kontak" style="color: #0284c7; font-weight: bold;">Kontak</a>.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="kontak" class="rasya_section rasya_bgAlt">
+        <div class="rasya_container">
+            <h2 class="rasya_sectionTitle">Kontak &amp; Pemesanan</h2>
+            <p class="rasya_subTitle">
+                Hubungi kami untuk menanyakan ketersediaan stok ikan, jadwal panen darurat saat air kali surut, atau koordinasi pembelian untuk wilayah lokal maupun luar desa.
+            </p>
+
+            <div class="rasya_gridCatalog">
+                <div class="rasya_card">
+                    <h3>📍 Informasi Pengelola Kolam</h3>
+                    <ul class="rasya_specs">
+                        <li><strong>Pengelola:</strong> Muhammad Rasya Aditya Ramadhani</li>
+                        <li><strong>Wilayah Operasional:</strong> Kolam Keluarga (Lokal &amp; Luar Desa)</li>
+                        <li><strong>Komoditas:</strong> Ikan Mas, Gurame, Mujair, Nilem</li>
+                        <li><strong>Skema Penjualan:</strong> Stok Reguler &amp; Panen Darurat</li>
+                    </ul>
+                    <p style="font-size: 0.92rem;">
+                        Silakan isi formulir di samping untuk mengirim pesan atau simulasi pemesanan ikan sesuai kebutuhan Anda.
+                    </p>
+                </div>
+
+                <div class="rasya_card">
+                    <h3>✉️ Kirim Pesan / Pemesanan</h3>
+                    <form id="rasya_formKontak" onsubmit="rasyaKirimPesan(event)">
+                        <div style="margin-bottom: 12px;">
+                            <label for="rasya_nama" style="display: block; font-weight: 700; margin-bottom: 5px; color: #0369a1;">Nama Lengkap</label>
+                            <input type="text" name="rasya_nama" id="rasya_nama" required placeholder="Masukkan nama Anda" style="width: 100%; padding: 10px;">
+                        </div>
+
+                        <div style="margin-bottom: 12px;">
+                            <label for="rasya_asal" style="display: block; font-weight: 700; margin-bottom: 5px; color: #0369a1;">Asal / Wilayah (Desa / Luar Desa)</label>
+                            <input type="text" id="rasya_asal" name="rasya_asal" required placeholder="Contoh: Desa Tetangga / Luar Desa" style="width: 100%; padding: 10px;">
+                        </div>
+
+                        <div style="margin-bottom: 12px;">
+                            <label for="rasya_noHp" style="display: block; font-weight: 700; margin-bottom: 5px; color: #0369a1;">No. HP / WhatsApp</label>
+                            <input type="tel" id="rasya_noHp" name="rasya_noHp" required pattern="[0-9+\-\s]{9,16}" placeholder="Contoh: 081234567890" style="width: 100%; padding: 10px;">
+                        </div>
+
+                        <div style="margin-bottom: 12px;">
+                            <label for="rasya_jenisIkan" style="display: block; font-weight: 700; margin-bottom: 5px; color: #0369a1;">Pilihan Ikan</label>
+                            <select name="rasya_jenisIkan" id="rasya_jenisIkan" style="width: 100%; padding: 10px; background: #fff;">
+                                <option value="Ikan Gurame">Ikan Gurame (Panen Darurat)</option>
+                                <option value="Ikan Mas">Ikan Mas (Panen Darurat)</option>
+                                <option value="Ikan Mujair">Ikan Mujair (Stok Reguler)</option>
+                                <option value="Ikan Nilem">Ikan Nilem (Stok Reguler)</option>
+                            </select>
+                        </div>
+
+                        <div style="margin-bottom: 15px;">
+                            <label for="rasya_pesan" style="display: block; font-weight: 700; margin-bottom: 5px; color: #0369a1;">Pesan / Perkiraan Jumlah (kg)</label>
+                            <textarea name="rasya_pesan" id="rasya_pesan" rows="3" required placeholder="Tuliskan kebutuhan atau pertanyaan kamu..." style="width: 100%; padding: 10px;"></textarea>
+                        </div>
+
+                        <button type="submit" class="rasya_btnOrder">Kirim Pesan</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="rasya_footer">
+        <div class="rasya_container">
+            <p>&copy; 2026 AquaHarvest - Muhammad Rasya Aditya Ramadhani (2503010112 - Kelas E). All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
